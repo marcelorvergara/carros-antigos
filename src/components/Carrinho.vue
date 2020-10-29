@@ -100,25 +100,25 @@
 
 <script>
 export default {
-name: "Carrinho",
-  props:{
-    listaCarros:Array
+  name: "Carrinho",
+  props: {
+    listaCarros: Array
   },
-  methods:{
-    submitFormulario(){
+  methods: {
+    submitFormulario() {
       confirm('Gostaria de finalizar o pedido?')
     },
-    somaGeral(){
+    somaGeral() {
       var totValor = 0;
-      for (let i=0; i < this.listaCarros.length; i++){
+      for (let i = 0; i < this.listaCarros.length; i++) {
         totValor += (this.listaCarros[i].valor);
       }
       return totValor
     }
   },
-  data(){
-    return{
-      fields:[
+  data() {
+    return {
+      fields: [
         {
           key: 'carro',
           sortable: true
@@ -128,87 +128,58 @@ name: "Carrinho",
           sortable: true
         }
       ],
-      pedido:{
-        primeiroNome:'',
-        ultimoNome:'',
-        endereco:'',
-        cidade:'',
-        estado:'',
-        cep:'',
-        pagoNaEntrega:'Não',
-        simNaEntrega:'Sim',
-        naoNaEntrega:'Não',
+      pedido: {
+        primeiroNome: '',
+        ultimoNome: '',
+        endereco: '',
+        cidade: '',
+        estado: '',
+        cep: '',
+        pagoNaEntrega: 'Não',
+        simNaEntrega: 'Sim',
+        naoNaEntrega: 'Não',
         entrega: 'Manhã'
       },
-      estados:{
+      estados: {
         RJ: 'Rio de Janeiro',
         MG: 'Minas Gerais',
         SP: 'São Paulo',
         ES: 'Espírito Santo'
       },
       carrinho: [],
-      carro: {id: 0, avaliacao: 0, estoqueDisponivel:0, carro: '', descricao: '' , valor: 0 , imagem: ''},
-      pedidoFinal:[],
+      carro: {id: 0, avaliacao: 0, estoqueDisponivel: 0, carro: '', descricao: '', valor: 0, imagem: ''},
+      pedidoFinal: [],
       item: {
-        id:Number,
         nome: String,
         valor: Number
       }
     }
   },
-  filters:{
-    capitalizar: function (valor){
+  filters: {
+    capitalizar: function (valor) {
       return valor.toUpperCase()
     }
   },
   created() {
-    var tot1 = 0;
-    var tot2 = 0;
-    var tot3 = 0;
-    var tot4 = 0;
-    var tot5 = 0;
-
-    var tot1q = 0;
-    var tot2q = 0;
-    var tot3q = 0;
-    var tot4q = 0;
-    var tot5q = 0;
-
-    for (let i=0; i< this.listaCarros.length ; i++){
-      switch (this.listaCarros[i].id){
-        case 1:
-            tot1q =+ tot1q+1;
-            tot1 += this.listaCarros[i].valor;
-            this.pedidoFinal[0] = {Carro:this.listaCarros[i].carro, Total: tot1, Quantidade: tot1q}
-          break;
-
-        case 2:
-          tot2q =+ tot2q+1;
-          tot2 += this.listaCarros[i].valor;
-          this.pedidoFinal[1] = {Carro:this.listaCarros[i].carro, Total: tot2, Quantidade: tot2q}
-          break;
-
-        case 3:
-          tot3q =+ tot3q+1;
-          tot3 += this.listaCarros[i].valor;
-          this.pedidoFinal[2] = {Carro:this.listaCarros[i].carro, Total: tot3, Quantidade: tot3q}
-          break;
-
-        case 4:
-          tot4q =+ tot4q+1;
-          tot4 += this.listaCarros[i].valor;
-          this.pedidoFinal[3] = {Carro:this.listaCarros[i].carro, Total: tot4, Quantidade: tot4q}
-          break;
-
-        case 5:
-          tot5q =+ tot5q +1;
-          tot5 += this.listaCarros[i].valor;
-          this.pedidoFinal[4] = {Carro:this.listaCarros[i].carro, Total: tot5, Quantidade: tot5q}
-          break;
+    let cars = new Map();
+    if (this.listaCarros.length > 0){
+      for (let i =0; i < this.listaCarros.length; i++){
+        if (!cars.has(this.listaCarros[i].carro)){
+          cars.set(this.listaCarros[i].carro,{valor:this.listaCarros[i].valor,qtd:1,id:this.listaCarros[i].id});
+        } else {
+          let tot = cars.get(this.listaCarros[i].carro).qtd + 1;
+          let newValor = this.listaCarros[i].valor + cars.get(this.listaCarros[i].carro).valor;
+          cars.set(this.listaCarros[i].carro,{valor:newValor,qtd:tot,id:this.listaCarros[i].id})
+        }
       }
     }
-    this.pedidoFinal.sort((a,b) => (a.Carro > b.Carro) ? 1 : ((b.Carro > a.Carro) ? -1 : 0));
-    console.log(this.pedidoFinal)
+    var it = []
+    cars.forEach(function (valor ,nome){
+      console.log(valor.valor)
+      it.push({nome: nome,valor: `R$ ${(valor.valor).toLocaleString()}`,Código:valor.id,quantidade:valor.qtd})
+    })
+    this.pedidoFinal = it;
+
   }
 }
 </script>
