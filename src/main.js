@@ -7,7 +7,7 @@ import './filters';
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
-
+import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css'
 Vue.config.productionTip = false
 
 new Vue({
