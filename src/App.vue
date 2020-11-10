@@ -1,8 +1,7 @@
 <template>
   <div>
-  <app-header v-bind:listaCompras="carros" @paraApp="mostraCarrinho"></app-header>
+  <app-header :listaCompras="carros" @paraApp="mostraCarrinho"></app-header>
   <div class="container mt-3 bg-light">
-
     <b-container>
       <b-row>
         <b-col cols="5" class="ml-auto">
@@ -34,7 +33,7 @@
     <div>
       <div>
         <app-main v-if="!mostrarTelaCarrinho" @paraApp="atualizaCarrinho"></app-main>
-        <app-carrinho v-else v-bind:listaCarros="carros"></app-carrinho>
+        <app-carrinho v-else :listaCarros="carros"></app-carrinho>
       </div>
     </div>
   </div>
@@ -61,7 +60,7 @@ export default {
       mostrarTelaCarrinho:false,
       mostrarCarrinho:false,
       segundos: 0,
-      title: "Concessionária de Carros Antigos",
+      title: "Concessionária Old Car Shop",
       horas: new Date().getHours(),
       quantidadeNoCarrinho:0,
       carros:[]
@@ -84,7 +83,9 @@ export default {
 </script>
 
 <style>
-span { white-space: pre-wrap; }
+span {
+  white-space: pre-wrap;
+}
 
 .row{
   justify-content: center;
@@ -96,6 +97,4 @@ span { white-space: pre-wrap; }
   background-position-x: 1px;
   background-size: 20px;
 }
-
-
 </style>

@@ -3,9 +3,11 @@
   <h4>Carrinho</h4>
   <div v-if="listaCarros.length">
     <h5 class="mt-4">Pedido:</h5>
-    <b-table striped hover :items="pedidoFinal" >
+    <b-table striped hover :items="pedidoFinal" :fields="fields" bordered outlined>
+      <template #table-caption>Pedidos agrupados pelo modelo do carro</template>
     </b-table>
     <b-row align-h="end">
+
       <b-col cols="4" class="bg-info"><strong class="text-light">Total: {{ somaGeral() | formatarPreco('R$')}} </strong></b-col>
     </b-row>
   </div>
@@ -86,11 +88,12 @@
         </pre>
     </div>
         <div class="form-group">
-          <button class="btn btn-info btn-block" @click="submitFormulario">
-            <b-icon-exclamation-triangle></b-icon-exclamation-triangle>
-            Finalizar Pedido
-            <b-icon-exclamation-triangle></b-icon-exclamation-triangle>
-          </button>
+          <b-button class="btn btn-info btn-block" v-b-modal.modal-1 @click="submitFormulario">
+            Finalizar Pedido <b-icon icon="clipboard-check"/></b-button>
+            <b-modal id="modal-1" title="Old Car Shop">
+              <p class="my-4">Gostaria de finalizar seu pedido?</p>
+            </b-modal>
+
         </div>
       </form>
     </div>
@@ -124,7 +127,15 @@ export default {
           sortable: true
         },
         {
-          key: 'total',
+          key: 'valor',
+          sortable: true
+        },
+        {
+          key:'Código',
+          sortable: true
+        },
+        {
+          key: 'quantidade',
           sortable: true
         }
       ],
@@ -175,8 +186,7 @@ export default {
     }
     var it = []
     cars.forEach(function (valor ,nome){
-      console.log(valor.valor)
-      it.push({nome: nome,valor: `R$ ${(valor.valor).toLocaleString()}`,Código:valor.id,quantidade:valor.qtd})
+      it.push({carro: nome,valor: `R$ ${(valor.valor).toLocaleString()}`,Código:valor.id,quantidade:valor.qtd})
     })
     this.pedidoFinal = it;
 

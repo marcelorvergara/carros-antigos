@@ -18,7 +18,7 @@
         </p>
       </b-card-text>
       <div class="avaliacao">
-        <star-rating v-bind:increment="0.5"
+        <star-rating v-bind:increment="0.1"
                      v-bind:max-rating="5"
                      v-bind:show-rating="false"
                      v-bind:rating="carro.avaliacao"
@@ -62,11 +62,11 @@ export default {
   data(){
     return{
       carros: [
-        { id: 1, avaliacao: 4, estoqueDisponivel:6, carro: 'Firebird', descricao: 'O <strong>Firebird</strong> é um modelo desportivo compacto da Pontiac. É famoso principalmente por ter sido o modelo do carro K.I.T.T., personagem na série Knight Rider' , valor: 500000.99 , imagem: 'https://farm5.static.flickr.com/4617/24976568427_600b67de51_b.jpg'},
-        { id: 2, avaliacao: 2, estoqueDisponivel:8, carro:'Cadillac Eldorado', descricao:'O <strong>Cadillac Eldorado</strong> é um automóvel coupé de porte grande da Cadillac, fabricado entre 1952 e 2002. A primeira geração durou somente um ano até surgir a segunda.',valor: 340000.34,imagem: 'https://farm5.static.flickr.com/4698/28067897479_6039b3014e_b.jpg'},
-        { id: 3, avaliacao: 5, estoqueDisponivel:3, carro:'GTO Pontiac', descricao:'Primeiro muscle car, o <strong>GTO</strong> fez da <strong>Pontiac</strong> um símbolo da esportividade de Detroit. ... Graças a uma equipe de apaixonados por carros, a marca só desabrocharia nos anos 60. Filho de um ex-presidente da GM, Semon “Bunkie” Knudsen havia assumido a divisão em 1956.',valor:430000.33,imagem: 'https://farm5.static.flickr.com/4611/28067896999_7c4b411760_b.jpg'},
-        { id: 4, avaliacao: 4, estoqueDisponivel:8, carro:'Chevrolet Task Force', descricao:'A série <strong>Task Force</strong>, mais conhecida como Chevrolet 3100 Marta Rocha sucedeu à série Advance Design, apelidada no Brasil de Chevrolet Boca de Sapo e Chevrolet Boca de Bagre. Introduzida no decorrer do ano de 1955, trazia um design mais moderno, seguindo a tendência do mercado americano.',valor: 280000.34,imagem: 'https://farm5.static.flickr.com/4751/25973969848_dee9622f0d_b.jpg'},
-        { id: 5, avaliacao: 3, estoqueDisponivel:7, carro:'Ford Model T', descricao:'O <strong>Ford Modelo T</strong> é um automóvel produzido pela fábrica norte-americana Ford, que popularizou e revolucionou a indústria automobilística. Vigésimo projeto da marca, foi fabricado por 19 anos, entre 1908 e 1927.',valor:720000.49,imagem: 'https://farm1.static.flickr.com/982/40181423420_c326955fc2_b.jpg'},
+        { id: "1HS21A", avaliacao: 4.2, estoqueDisponivel:6, carro: 'Firebird', descricao: 'O <strong>Firebird</strong> é um modelo desportivo compacto da Pontiac. É famoso principalmente por ter sido o modelo do carro K.I.T.T., personagem na série Knight Rider' , valor: 500000.99 , imagem: 'https://farm5.static.flickr.com/4617/24976568427_600b67de51_b.jpg'},
+        { id: "2A14ART", avaliacao: 2.6, estoqueDisponivel:8, carro:'Cadillac Eldorado', descricao:'O <strong>Cadillac Eldorado</strong> é um automóvel coupé de porte grande da Cadillac, fabricado entre 1952 e 2002. A primeira geração durou somente um ano até surgir a segunda.',valor: 340000.34,imagem: 'https://farm5.static.flickr.com/4698/28067897479_6039b3014e_b.jpg'},
+        { id: "3ER7AF", avaliacao: 5, estoqueDisponivel:3, carro:'GTO Pontiac', descricao:'Primeiro muscle car, o <strong>GTO</strong> fez da <strong>Pontiac</strong> um símbolo da esportividade de Detroit. ... Graças a uma equipe de apaixonados por carros, a marca só desabrocharia nos anos 60. Filho de um ex-presidente da GM, Semon “Bunkie” Knudsen havia assumido a divisão em 1956.',valor:430000.33,imagem: 'https://farm5.static.flickr.com/4611/28067896999_7c4b411760_b.jpg'},
+        { id: "4RC432", avaliacao: 4.8, estoqueDisponivel:8, carro:'Chevrolet Task Force', descricao:'A série <strong>Task Force</strong>, mais conhecida como Chevrolet 3100 Marta Rocha sucedeu à série Advance Design, apelidada no Brasil de Chevrolet Boca de Sapo e Chevrolet Boca de Bagre. Introduzida no decorrer do ano de 1955, trazia um design mais moderno, seguindo a tendência do mercado americano.',valor: 280000.34,imagem: 'https://farm5.static.flickr.com/4751/25973969848_dee9622f0d_b.jpg'},
+        { id: "5WA424", avaliacao: 3.7, estoqueDisponivel:7, carro:'Ford Model T', descricao:'O <strong>Ford Modelo T</strong> é um automóvel produzido pela fábrica norte-americana Ford, que popularizou e revolucionou a indústria automobilística. Vigésimo projeto da marca, foi fabricado por 19 anos, entre 1908 e 1927.',valor:720000.49,imagem: 'https://farm1.static.flickr.com/982/40181423420_c326955fc2_b.jpg'},
       ],
       carrinho:[]
     }
