@@ -1,7 +1,6 @@
 <template>
 <div class="container">
   <b-card-group deck>
-
     <b-card v-for="(carro, index) in carrosOrdenados" :key="index"
             :title='carro.carro'
             :img-src='carro.imagem'
